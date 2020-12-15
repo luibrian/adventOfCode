@@ -1,33 +1,27 @@
 #2020 Advent of Code Day 2 
 import re
 
-def part1(data):
-    """Find number of valid passwords according to policy
-    """
+def part1(data) -> int:
+    """Find number of valid passwords according to policy"""
     count = 0
     for line in data:
-        min_count = int(line[0])
-        max_count = int(line[1])
-        des_letter = line[2]
-        password = line[3]
+        min_count, max_count, des_letter, password = line
         letter_count = 0
         for letter in password:
             if letter == des_letter:
                 letter_count += 1
-        if letter_count >= min_count and letter_count <= max_count:
+        if int(min_count) <= letter_count <= int(max_count):
             count +=1
     return count
 
 
-def part2(data):
-    """Find number of valid passwords according to policy
-    """
+def part2(data) -> int:
+    """Find number of valid passwords according to policy"""
     count = 0
     for line in data:
-        pos1 = int(line[0])-1 
-        pos2 = int(line[1])-1
-        des_letter = line[2]
-        password = line[3]
+        min_count, max_count, des_letter, password = line
+        pos1 = int(min_count) - 1
+        pos2 = int(max_count) - 1
         if pos1 < len(password) and pos2 < len(password):
             if (password[pos1] == des_letter) ^ (password[pos2] == des_letter):
                 count += 1

@@ -1,9 +1,7 @@
 #2020 Advent of Code Day 4
 
 def part1(data):
-    """
-    Count number of valid passports
-    """
+    """Count number of valid passports"""
     req_set = set(['byr', 'iyr', 'eyr', 'hgt', 'hcl', 'ecl', 'pid'])
     opt_set = set(['cid'])
     count = 0
@@ -30,13 +28,12 @@ def part2(data_p1):
     count = 0
     for passport in data_p1:
         check = True
-        for field in passport:
+        for field,value in passport.items():
             if not check:
                 break
 
-            value = passport[field]
             if field == 'byr':
-                check = check and  check_byr(value)
+                check = check and check_byr(value)
             elif field == 'iyr':
                 check = check and check_iyr(value)
             elif field == 'eyr':
@@ -50,14 +47,13 @@ def part2(data_p1):
             elif field == 'pid':
                 check = check and check_pid(value)
             elif field == 'cid':
-                check = True
+                pass
             else:
                 check = False
         if check: 
             count += 1
     return count
 
-            
     
 def check_byr(data):
     return (int(data) >= 1920) and (int(data) <= 2002)
@@ -87,7 +83,7 @@ def check_hcl(data):
     i = 1
     while truth and i < len(data):
         if data[i] not in possible_set:
-            truth = False
+            return False
         i += 1
     return truth
 

@@ -25,7 +25,7 @@ def calc_vertices(wire_path):
     """
     Given a wire path (R8,U5,L5,D3,etc), calculate all vertices of the path
     """
-
+    for move in 
 
 
 if __name__ == "__main__":

@@ -29,12 +29,10 @@ def part2(data_p1):
         if d[:2] == 'FF' or d[:2] == 'BB':
             unseen.pop(d)
     return unseen
-
+ 
 
 def read_input(in_text):
-    """
-    Reads the input text file and outputs array of arrays
-    """
+    """Reads the input text file and outputs array of arrays"""
     data = []
     with open(in_text, 'r') as f:
         for line in f.readlines():
@@ -61,13 +59,11 @@ def update_passport(passport,loc):
     new_char = swap(passport[loc])
     p_list = list(passport)
     p_list[loc] = new_char
-    new_pass = ''
-    return new_pass.join(p_list)
+    return ''.join(p_list)
 
 
 def swap(data):
-    """ Swap F/B or L/R
-    """
+    """ Swap F/B or L/R"""
     assert data in set(['F','B','R','L']), 'Not the right character'
 
     if data == 'F':

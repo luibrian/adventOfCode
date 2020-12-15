@@ -1,33 +1,25 @@
 #2020 Advent of Code Day 3
 
 def part1(data):
-    """
-    Provide the value left at position 0 after the program halts
-    """
+    """Provide the value left at position 0 after the program halts."""
     movement = [3,1]
     tree_count = travel_slope(data,movement)
     return tree_count
     
 
 def part2(data):
+    """Find number of trees you hit."""
     movements = [[1,1], [3,1], [5,1], [7,1], [1,2]]
     product = 1
     for movement in movements:
-        tree_count = travel_slope(data,movement)
-        product *= tree_count
+        product *= travel_slope(data,movement)
     return product
 
 
 def read_input(in_text):
-    """
-    Reads the input text file and outputs array of arrays
-    """
-    data = []
+    """ Reads the input text file and outputs array of arrays."""
     with open(in_text, 'r') as f:
-        for line in f.readlines():
-            line = line.strip()
-            data.append(line) 
-        return data
+        return [line.strip() for line in f.readlines()]
 
 
 def travel_slope(data, movement):
